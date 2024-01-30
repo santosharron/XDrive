@@ -47,20 +47,19 @@ const UploadImage = ({ currentAccount, getEthereumContract }) => {
       <div className="w-full h-full flex bg-black bg-opacity-60">
         <div className="p-4 w-max m-auto rounded-lg">
           <div className="file_upload" style={{ vw: "28.75rem" }}>
-            <svg
-              className="text-indigo-500 w-24 mx-auto mb-4"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
+           <svg 
+             xmlns="http://www.w3.org/2000/svg"
+             stroke="currentColor" 
+             classname ="text-indigo-500 w-24 mx-auto mb-4" 
+             viewBox="0 0 24 24">
+            <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
               />
-            </svg>
+
+           </svg>
             <div className="input_field flex flex-col w-max mx-auto text-center">
               <label>
                 <input
@@ -69,7 +68,8 @@ const UploadImage = ({ currentAccount, getEthereumContract }) => {
                   accept=".jpg, .jpeg, .png"
                   onChange={retrieveFile}
                 />
-                <div className="text bg-indigo-600 text-white rounded font-semibold cursor-pointer p-1 px-5 hover:bg-indigo-500">
+                <div className="text bg-indigo-600 text-white rounded-full font-semibold cursor-pointer p-3 px-6 hover:bg-indigo-500 mt-4">
+
                   Upload Image
                 </div>
               </label>
