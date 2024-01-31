@@ -29,6 +29,9 @@ const UploadImage = ({ currentAccount, getEthereumContract }) => {
         const contractSigner = contract.connect(signer);
         await contractSigner.add(currentAccount, ImgHash);
         alert("Successfully Image Uploaded");
+        console.log(ImgHash)
+        console.log(contractSigner)
+        console.log(resFile)
       } catch (e) {
         alert("Unable to upload image to Pinata");
       }
@@ -50,7 +53,7 @@ const UploadImage = ({ currentAccount, getEthereumContract }) => {
            <svg 
              xmlns="http://www.w3.org/2000/svg"
              stroke="currentColor" 
-             classname ="text-indigo-500 w-24 mx-auto mb-4" 
+             className ="text-indigo-500 w-24 mx-auto mb-4" 
              viewBox="0 0 24 24">
             <path
                 strokeLinecap="round"

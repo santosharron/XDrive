@@ -4,34 +4,55 @@ import Header from "@/components/utility/Header";
 import { XDriveContext } from "@/context/XDriveContext";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
+import { ethers } from "ethers";
+import { contractABI, contractAddress } from "@/lib/constants";
+
+
+// Assuming CONTRACT_ADDRESS, ABI, id, and descriptionCID are defined somewhere
 
 const gallery = () => {
   const { currentAccount, getEthereumContract } = useContext(XDriveContext);
   const [images, setImages] = useState([]);
   const router = useRouter();
+
   useEffect(() => {
-    if (!currentAccount) return;
-    if (router.query.accessImages) {
-      setImages(router.query.accessImages);
-    } else {
-      display();
-    }
+    // if (!currentAccount) return;
+    // if (router.query.accessImages) {
+    //   setImages(router.query.accessImages);
+    // } else {
+    display();
+    // }
   }, [currentAccount]);
 
   const display = async () => {
-    if (!currentAccount) return;
     try {
-      const { contract } = await getEthereumContract();
-      const fetchImages = await contract.display(currentAccount);
-      const isEmpty = Object.keys(fetchImages).length === 0;
-      if (!isEmpty) {
-        const renderImages = fetchImages.toString().split(",");
-        setImages(renderImages);
+      const { ethereum } = window;
+  
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        const connectedContract = new ethers.Contract(
+          contractAddress,
+          contractABI,
+          signer
+        );
+        console.log("Value of current account :", currentAccount);
+  
+        let fetchImages = await connectedContract.display(`${currentAccount}`);
+        console.log(fetchImages);
+  
+        const isEmpty = Object.keys(fetchImages).length === 0;
+        if (!isEmpty) {
+          const renderImages = fetchImages.toString().split(",");
+          setImages(renderImages);
+        }
       }
-    } catch (e) {
-      alert("You don't have access");
+    } catch (error) {
+      console.error(error);
     }
   };
+
+  // Rest of the code
 
   return (
     <div className="flex-1">

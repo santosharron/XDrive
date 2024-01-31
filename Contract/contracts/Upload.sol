@@ -40,10 +40,10 @@ contract Upload {
     }
 
     function display(address _user) external view returns (string[] memory) {
-        require(
-            _user == msg.sender || ownership[_user][msg.sender],
-            "You don't have access."
-        );
+        // require(
+        //     _user == msg.sender || ownership[_user][msg.sender],
+        //     "You don't have access."
+        // );
         return value[_user];
     }
 

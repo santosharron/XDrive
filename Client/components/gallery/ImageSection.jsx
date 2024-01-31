@@ -17,7 +17,11 @@ const ImageSection = ({ images }) => {
         </div>
         <div className="flex flex-wrap -m-4">
           {images.map((image, index) => (
-            <DisplayImage key={index} image={image} />
+            <div key={index}>
+              {console.log(image)}
+              {console.log("Hello")}
+              <DisplayImage key={index} image={image} />
+            </div>
           ))}
         </div>
       </div>
