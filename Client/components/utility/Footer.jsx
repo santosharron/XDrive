@@ -14,7 +14,7 @@ const Footer = () => {
           <span className="ml-4 text-xl">XDrive</span>
         </Link>
         <p className="text-sm text-gray-400 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4">
-          © 2023 XDrive<span className="text-gray-500 ml-1"></span>
+          © 2024 XDrive<span className="text-gray-500 ml-1"></span>
         </p>
         <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
           <a className="text-gray-400">
